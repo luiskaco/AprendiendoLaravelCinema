@@ -1,9 +1,9 @@
 @extends('layouts.admin')
-@section('content')
-            
 
+
+<!-->
+Seria repetir el mismo codigo en cada una de las ventanas  -->
             <?php $message=Session::get('message'); /** Generando variable*/?>
-            
             @if($message=='store')
                    <div class="alert alert-success">
                          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -11,7 +11,12 @@
                    </div>
             @endif
 
+  
+<!-- forma mas ordenada de usar-->
 
+
+@section('content')
+ 
              <table class="table table-bordered table-hover">
              	<thead>
              		<tr>
@@ -25,7 +30,12 @@
              		<tr>
              			<td>{{ $user->name }}</td>
                               <td>{{ $user->email }}/td>
-                              <td></td>
+                              <td>
+                              {!!
+              /** Usando laravel Collective para los enlaces.  */
+            link_to_route('usuario.edit', $title = 'Editar', $parameters = $user->id, $attributes = ['class'=>'btn btn-primary'])
+                             !!}
+                              </td>
              		</tr>
              	</tbody>
                   @endforeach

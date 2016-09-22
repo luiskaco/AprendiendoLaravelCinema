@@ -30,4 +30,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+  /**
+     Setear la clave...
+   */
+    public function setPasswordAttribute($valor){
+        if(!empty($valor)){
+             /** atribute  es una vriable propia del modelo */
+            $this->attributes['password'] = \Hash::make($valor);  // hasj sirve para encriptar
+        }
+    }
 }

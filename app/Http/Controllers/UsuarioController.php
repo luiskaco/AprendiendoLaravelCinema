@@ -3,8 +3,11 @@
 namespace cinema\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use cinema\Http\Requests;
+/** Hacer uso del modelo */
+use cinema\User;
+/*Incorporar elemento de redireccion*/
+
 
 class UsuarioController extends Controller
 {
@@ -16,7 +19,7 @@ class UsuarioController extends Controller
     public function index()
     {
         //Mostrar Resultado
-         $users=\cinema\User::All(); // extraer todo y enviar informacion
+         $users=User::All(); // extraer todo y enviar informacion
          
          return view("usuario.index", compact('users'));
         
@@ -44,11 +47,14 @@ class UsuarioController extends Controller
     {   /**
         Llamar el modelo user y metodo create
      */
-        \cinema\User::create([
+        User::create([
         'name'=>$request['name'], /** haciendo referencia a lo campos del formulario */    
         'email'=>$request['email'],
-        'password'=>bcrypt($request['password']), // bcrypt -> Metodo de encriptacion de laravel
+       'password'=>$request['password'],
+       // 'password'=>bcrypt($request['password']), // bcrypt -> Metodo de encriptacion de laravel
         ]);
+      
+
         return redirect('/usuario')->with('message','store'); /** Redireccionando y creando un mensaje para el guardado*/
     }
 
@@ -71,7 +77,10 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
-        //
+        //Para Actualizar 
+        $user = User::find($id);
+        return view('usuario.edit', ['user'=>$user]);
+        
     }
 
     /**
@@ -83,7 +92,18 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user=User::find($id);
+        $user->fill($request->all()); //seleciona y rellena todas las columnas del modelo
+        $user->save();
+
+         /*
+          Nota: La variable session nos permite almacenar informacion de los usuarios.
+          */
+         Session::flash('message','Usuario Editado correctamente');
+         
+         return Redirect::to('/usuario');
+
+         // Nota: Debe incorporarse los elementos de session y redireccion en el controlador.
     }
 
     /**

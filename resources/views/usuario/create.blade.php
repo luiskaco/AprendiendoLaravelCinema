@@ -10,13 +10,13 @@
 
  		<div class="form-group">
         	 {!! Form::label('Correo') !!}
-        	 {!! Form::text('email',null,['class'=>'form-control', 'placeholder'=>'tucorreo@ejemplo.com']) !!}
+        	 {!! Form::email('email',null,['class'=>'form-control', 'placeholder'=>'tucorreo@ejemplo.com']) !!}
         </div>
 
   <!-- Para password, recordar no pasar el paraMETRO NULL-->
  		<div class="form-group">
         	 {!! Form::label('Password') !!}
-        	 {!! Form::password('password',['class'=>'form-control', 'placeholder'=>'tucorreo@ejemplo.com']) !!}
+        	 {!! Form::password('password',['class'=>'form-control']) !!}
         </div>
         {!! Form::submit('Registrar',['class'=>'btn btn-primary']) !!}
 

@@ -15,7 +15,12 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        //
+        //Mostrar Resultado
+         $users=\cinema\User::All(); // extraer todo y enviar informacion
+         
+         return view("usuario.index", compact('users'));
+        
+        
     }
 
     /**
@@ -35,8 +40,16 @@ class UsuarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    /** GUARDAR */
+    {   /**
+        Llamar el modelo user y metodo create
+     */
+        \cinema\User::create([
+        'name'=>$request['name'], /** haciendo referencia a lo campos del formulario */    
+        'email'=>$request['email'],
+        'password'=>bcrypt($request['password']), // bcrypt -> Metodo de encriptacion de laravel
+        ]);
+        return redirect('/usuario')->with('message','store'); /** Redireccionando y creando un mensaje para el guardado*/
     }
 
     /**

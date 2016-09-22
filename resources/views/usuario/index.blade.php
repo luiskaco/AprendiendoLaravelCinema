@@ -1,19 +1,24 @@
 @extends('layouts.admin')
 
 
-<!-->
-Seria repetir el mismo codigo en cada una de las ventanas  -->
-            <?php $message=Session::get('message'); /** Generando variable*/?>
-            @if($message=='store')
+<!-- 
+Seria repetir el mismo codigo en cada una de las ventanas 
+            < ? php $message=Session::get('message'); /** Generando variable*/?>
+            @ if($message=='store')
                    <div class="alert alert-success">
                          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                          <strong>Title!</strong> Usuario creado exitosamente
                    </div>
-            @endif
+            @ endif
 
-  
+-->   
 <!-- forma mas ordenada de usar-->
-
+@if(Session::has('message'))
+       <div class="alert alert-success">
+                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        {{ Session::get('message') }}
+                   </div>
+@endif
 
 @section('content')
  

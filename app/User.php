@@ -37,7 +37,7 @@ class User extends Authenticatable
     public function setPasswordAttribute($valor){
         if(!empty($valor)){
              /** atribute  es una vriable propia del modelo */
-            $this->attributes['password'] = \Hash::make($valor);  // hasj sirve para encriptar
+            $this->attributes['password'] = \Hash::make($valor);  // hash sirve para encriptar
         }
     }
 }

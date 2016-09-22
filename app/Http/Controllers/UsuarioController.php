@@ -8,6 +8,9 @@ use cinema\Http\Requests;
 use cinema\User;
 /*Incorporar elemento de redireccion*/
 
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
+
 
 class UsuarioController extends Controller
 {
@@ -53,9 +56,9 @@ class UsuarioController extends Controller
        'password'=>$request['password'],
        // 'password'=>bcrypt($request['password']), // bcrypt -> Metodo de encriptacion de laravel
         ]);
-      
-
-        return redirect('/usuario')->with('message','store'); /** Redireccionando y creando un mensaje para el guardado*/
+        Session::flash('message','Usuario creado correctamente');
+        return Redirect::to('/usuario');
+        //return redirect('/usuario')->with('message','store'); /** Redireccionando y creando un mensaje para el guardado*/
     }
 
     /**

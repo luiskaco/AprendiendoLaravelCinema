@@ -11,7 +11,7 @@
 |
 */
 
-$factory->define(cinema\User::class, function (Faker\Generator $faker) {
+$factory->define(Cinema\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [

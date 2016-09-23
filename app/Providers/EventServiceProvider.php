@@ -1,6 +1,6 @@
 <?php
 
-namespace cinema\Providers;
+namespace Cinema\Providers;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'cinema\Events\SomeEvent' => [
-            'cinema\Listeners\EventListener',
+        'Cinema\Events\SomeEvent' => [
+            'Cinema\Listeners\EventListener',
         ],
     ];
 

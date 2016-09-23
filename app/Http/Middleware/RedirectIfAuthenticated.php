@@ -1,6 +1,6 @@
 <?php
 
-namespace cinema\Http\Middleware;
+namespace Cinema\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;

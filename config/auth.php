@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => cinema\User::class,
+            'model' => Cinema\User::class,
         ],
 
         // 'users' => [

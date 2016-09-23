@@ -1,6 +1,6 @@
 <?php
 
-namespace cinema;
+namespace Cinema;
 
 use Illuminate\Database\Eloquent\Model;
 

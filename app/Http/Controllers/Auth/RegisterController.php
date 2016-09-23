@@ -1,10 +1,10 @@
 <?php
 
-namespace cinema\Http\Controllers\Auth;
+namespace Cinema\Http\Controllers\Auth;
 
-use cinema\User;
+use Cinema\User;
 use Validator;
-use cinema\Http\Controllers\Controller;
+use Cinema\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller

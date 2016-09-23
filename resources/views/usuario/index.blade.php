@@ -13,12 +13,12 @@ Seria repetir el mismo codigo en cada una de las ventanas
 
 -->   
 <!-- forma mas ordenada de usar-->
-@if(Session::has('message'))
-       <div class="alert alert-success">
+            @if(Session::has('message'))
+                   <div class="alert  {{ Session::get('alert') }}">
                          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         {{ Session::get('message') }}
                    </div>
-@endif
+            @endif
 
 @section('content')
  
@@ -34,7 +34,7 @@ Seria repetir el mismo codigo en cada una de las ventanas
              	<tbody>
              		<tr>
              			<td>{{ $user->name }}</td>
-                              <td>{{ $user->email }}/td>
+                              <td>{{ $user->email }}</td>
                               <td>
                               {!!
               /** Usando laravel Collective para los enlaces.  */

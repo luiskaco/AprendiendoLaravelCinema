@@ -1,10 +1,10 @@
 <?php
 
-namespace cinema\Http\Controllers;
+namespace Cinema\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use cinema\Http\Requests;
+use Cinema\Http\Requests;
 
 class FrontController extends Controller
 {

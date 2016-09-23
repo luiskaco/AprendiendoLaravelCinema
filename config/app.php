@@ -173,11 +173,11 @@ return [
         /*
          * Application Service Providers...
          */
-        cinema\Providers\AppServiceProvider::class,
-        cinema\Providers\AuthServiceProvider::class,
-        // cinema\Providers\BroadcastServiceProvider::class,
-        cinema\Providers\EventServiceProvider::class,
-        cinema\Providers\RouteServiceProvider::class,
+        Cinema\Providers\AppServiceProvider::class,
+        Cinema\Providers\AuthServiceProvider::class,
+        // Cinema\Providers\BroadcastServiceProvider::class,
+        Cinema\Providers\EventServiceProvider::class,
+        Cinema\Providers\RouteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class, //agregado el collective
 
     ],

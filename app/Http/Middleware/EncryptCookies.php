@@ -1,6 +1,6 @@
 <?php
 
-namespace cinema\Http\Middleware;
+namespace Cinema\Http\Middleware;
 
 use Illuminate\Cookie\Middleware\EncryptCookies as BaseEncrypter;
 

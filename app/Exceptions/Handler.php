@@ -1,6 +1,6 @@
 <?php
 
-namespace cinema\Exceptions;
+namespace Cinema\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;

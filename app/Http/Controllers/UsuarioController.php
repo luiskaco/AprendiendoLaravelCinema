@@ -1,16 +1,19 @@
 <?php
 
-namespace cinema\Http\Controllers;
+namespace Cinema\Http\Controllers;
 
 use Illuminate\Http\Request;
-use cinema\Http\Requests;
+use Cinema\Http\Requests;
 /** Hacer uso del modelo */
-use cinema\User;
-/*Incorporar elemento de redireccion*/
+use Cinema\User;
 
+/*Incorporar elemento de redireccion*/
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 
+/*Importando el validador REQUiRES para este controlador*/
+ use Cinema\Http\Requests\UserCreateRequest;    // Nombre Simbolico al realizar el make:request
+ 
 
 class UsuarioController extends Controller
 {
@@ -23,10 +26,7 @@ class UsuarioController extends Controller
     {
         //Mostrar Resultado
          $users=User::All(); // extraer todo y enviar informacion
-         
-         return view("usuario.index", compact('users'));
-        
-        
+         return view("usuario.index", compact('users')); //compacta el json    
     }
 
     /**
@@ -45,7 +45,13 @@ class UsuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    
+   /*  
+   Se cambia el  public function store(Request $request)  , 
+   para incluir el validador 
+  public function store(UserCreateRequest $request) ya creado en request
+   */
+    public function store(UserCreateRequest $request)
     /** GUARDAR */
     {   /**
         Llamar el modelo user y metodo create
@@ -57,6 +63,8 @@ class UsuarioController extends Controller
        // 'password'=>bcrypt($request['password']), // bcrypt -> Metodo de encriptacion de laravel
         ]);
         Session::flash('message','Usuario creado correctamente');
+        /*Se almacena un elemento en la SESSION*/
+        Session::put(['alert' => 'alert-success']);
         return Redirect::to('/usuario');
         //return redirect('/usuario')->with('message','store'); /** Redireccionando y creando un mensaje para el guardado*/
     }
@@ -95,18 +103,16 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user=User::find($id);
-        $user->fill($request->all()); //seleciona y rellena todas las columnas del modelo
-        $user->save();
+          $user=User::find($id);
+          $user->fill($request->all()); // Seleciona y rellena la base de datos.  metodo fill :rellena
+          $user->save();
 
-         /*
-          Nota: La variable session nos permite almacenar informacion de los usuarios.
-          */
-         Session::flash('message','Usuario Editado correctamente');
+          Session::flash('message','Usuario se actualizado correctamente');
+          /*Se almacena un elemento en la SESSION*/
+          Session::put(['alert' => 'alert-info']);
          
          return Redirect::to('/usuario');
-
-         // Nota: Debe incorporarse los elementos de session y redireccion en el controlador.
+          // Nota: Debe incorporarse los elementos de session y redireccion en el controlador.
     }
 
     /**
@@ -117,6 +123,15 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Para eliminar
+         
+          User::destroy($id);
+          /*Se imprime mensaje por la session*/
+          Session::flash('message','Usuario se ha eliminado correctamente');
+          /*Se almacena un elemento en la SESSION*/
+          Session::put(['alert' => 'alert-info']);
+         
+         return Redirect::to('/usuario');
+          // Nota: Debe incorporarse los elementos de session y redireccion en el controlador.
     }
 }

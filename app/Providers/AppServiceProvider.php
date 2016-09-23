@@ -1,6 +1,6 @@
 <?php
 
-namespace cinema\Providers;
+namespace Cinema\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

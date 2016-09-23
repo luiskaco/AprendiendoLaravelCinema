@@ -47,5 +47,4 @@ Seria repetir el mismo codigo en cada una de las ventanas
              </table>
 
             {!!$users->render()!!} <!-- Se realizar el renderizado del paginador.-->
-
 @endsection

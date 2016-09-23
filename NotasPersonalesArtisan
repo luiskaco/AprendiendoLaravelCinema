@@ -1,0 +1,24 @@
+touch : crear documento
+php artisan make:request    -- Se usa para crear los validadores.
+php artisan route:list      -- Se usa para listar las rutas
+php artisan  make:migration add_deleted_to_users_table --table=ESPECFICAR TABLA
+Nota: se usara para realizar una migration de una tabla ya creada.
+
+
+  /*Se crea un contrcutor para simplificar lineas*/
+
+            public function __construct(){
+                             
+                $this->beforeFilter('@find',['only' =>['edit','update','destroy']]); 
+
+                // beforefilter: filtro que se ejecuta antes de cualquier accion.  el metodo solo se ejecutauna vez  para edit, update y destroy
+            }
+
+           public function find(){
+                   $this->user=User::find($route->getParameter('usuario')); //recurso usuario  ojo referencia la ruta
+                   return $this->user;
+
+                  /* Nota: con anteriodidad se pasaba por id, pero no se puede.. debe usarse una libreria que nos permita usar parametros de la ruta. */
+           }
+
+/*Se crea un contrcutor para simplificar lineas*/

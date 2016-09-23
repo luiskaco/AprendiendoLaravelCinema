@@ -15,10 +15,11 @@ use Illuminate\Support\Facades\Redirect;
  use Cinema\Http\Requests\UserCreateRequest;    // Nombre Simbolico al realizar el make:request
  use Cinema\Http\Requests\UserUpdateRequest;
 
-
+/*Importando libreria para obtener parametros de rutas, relacionada a los parametros que la ruta misma envia.*/
+use Illuminate\Routing\Route;
 
 class UsuarioController extends Controller
-{
+{    
     /**
      * Display a listing of the resource.
      *
@@ -61,12 +62,15 @@ class UsuarioController extends Controller
     {   /**
         Llamar el modelo user y metodo create
      */
-        User::create([
-        'name'=>$request['name'], /** haciendo referencia a lo campos del formulario */    
+      /*  SE cambia 
+         User::create([
+        'name'=>$request['name'], haciendo referencia a lo campos del formulario    
         'email'=>$request['email'],
        'password'=>$request['password'],
+       a User::create($request->all());
+       */
        // 'password'=>bcrypt($request['password']), // bcrypt -> Metodo de encriptacion de laravel
-        ]);
+        User::create($request->all());
         Session::flash('message','Usuario creado correctamente');
         /*Se almacena un elemento en la SESSION*/
         Session::put(['alert' => 'alert-success']);

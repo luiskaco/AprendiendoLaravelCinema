@@ -10,7 +10,7 @@
         </div>
 
   <!-- Para password, recordar no pasar el paraMETRO NULL-->
- 	  	<div class="form-group">
+ 	  	  <div class="form-group">
         	 {!! Form::label('Password') !!}
         	 {!! Form::password('password',['class'=>'form-control']) !!}
         </div>

@@ -13,12 +13,12 @@ Seria repetir el mismo codigo en cada una de las ventanas
 
 -->   
 <!-- forma mas ordenada de usar-->
-            @if(Session::has('message'))
-                   <div class="alert  {{ Session::get('alert') }}">
-                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        {{ Session::get('message') }}
-                   </div>
-            @endif
+                  @if(Session::has('message'))
+                         <div class="alert  {{ Session::get('alert') }}">
+                               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                              {{ Session::get('message') }}
+                         </div>
+                  @endif
 
 @section('content')
  
@@ -45,5 +45,7 @@ Seria repetir el mismo codigo en cada una de las ventanas
              	</tbody>
                   @endforeach
              </table>
+
+            {!!$users->render()!!} <!-- Se realizar el renderizado del paginador.-->
 
 @endsection

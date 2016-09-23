@@ -25,7 +25,9 @@ class UserUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+             // Creamos las reglas para validar 
+            'name'=>'required',
+            'email'=>'required',
         ];
     }
 }

@@ -26,7 +26,7 @@ class UserCreateRequest extends FormRequest
         return [
             // Creamos las reglas para validar 
             'name'=>'required',
-            'email'=>'required',
+            'email'=>'required|unique:users',   // Se le indica que es unico en la tabla users
             'password'=>'required',
         ];
     }

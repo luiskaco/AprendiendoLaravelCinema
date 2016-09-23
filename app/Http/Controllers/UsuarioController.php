@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Redirect;
 
 /*Importando el validador REQUiRES para este controlador*/
  use Cinema\Http\Requests\UserCreateRequest;    // Nombre Simbolico al realizar el make:request
- 
+ use Cinema\Http\Requests\UserUpdateRequest;
+
+
 
 class UsuarioController extends Controller
 {
@@ -25,8 +27,11 @@ class UsuarioController extends Controller
     public function index()
     {
         //Mostrar Resultado
-         $users=User::All(); // extraer todo y enviar informacion
+       //  $users=User::All(); // extraer todo y enviar informacion
+          /*Nota:  se sustituira el $users=User::All();  para ser uso del metodo $users=User::paginate();  */    
+         $users=User::paginate(2); /** Nota: Dentro del paginate(DENTRO) se especifica el numero de recursos a enviarse. */
          return view("usuario.index", compact('users')); //compacta el json    
+          /*Nota3: para mostrar elementos eliminados cde softdelete se usa el metodo ::onlyTrashed()->paginate()*/
     }
 
     /**
@@ -101,7 +106,7 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
           $user=User::find($id);
           $user->fill($request->all()); // Seleciona y rellena la base de datos.  metodo fill :rellena
@@ -123,9 +128,12 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        // Para eliminar
-         
-          User::destroy($id);
+        // Para eliminar<
+            /**
+             *  NOta: se procede a cambiar la funcion  User::destroy($id); (destruye el recurso) para hacer una busqueda y usar la funcion y posteriormente hacer uso del demetodo DELETE()
+             */
+             $user=User::find($id);
+             $user->delete();
           /*Se imprime mensaje por la session*/
           Session::flash('message','Usuario se ha eliminado correctamente');
           /*Se almacena un elemento en la SESSION*/

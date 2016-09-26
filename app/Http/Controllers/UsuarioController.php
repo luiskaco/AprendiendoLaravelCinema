@@ -57,7 +57,7 @@ class UsuarioController extends Controller
    para incluir el validador 
   public function store(UserCreateRequest $request) ya creado en request
    */
-    public function store(UserCreateRequest $request)
+    public function store(UserCreateRequest $request, User $user)
     /** GUARDAR */
     {   /**
         Llamar el modelo user y metodo create
@@ -70,7 +70,8 @@ class UsuarioController extends Controller
        a User::create($request->all());
        */
        // 'password'=>bcrypt($request['password']), // bcrypt -> Metodo de encriptacion de laravel
-        User::create($request->all());
+        //User::create($request->all());
+        $user->create($request->all());
         Session::flash('message','Usuario creado correctamente');
         /*Se almacena un elemento en la SESSION*/
         Session::put(['alert' => 'alert-success']);
@@ -95,10 +96,11 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id,User $user)
     {
         //Para Actualizar 
-        $user = User::find($id);
+        $user = $user->find($id);
+
         return view('usuario.edit', ['user'=>$user]);
         
     }

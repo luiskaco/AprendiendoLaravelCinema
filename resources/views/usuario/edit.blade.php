@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
-
-			<!-- Incluyendo las alertas -->
+          {{ $user->id }}
+		 	<!-- Incluyendo las alertas -->
               @include('alerts.request')
 
           	<!-- Para mostrar elementos de un modelo se usa model y metodo put para actualizar-->

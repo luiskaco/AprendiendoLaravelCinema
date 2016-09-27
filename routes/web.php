@@ -19,8 +19,14 @@
    Route::get('reviews','FrontController@reviews');
    Route::get('admin','FrontController@admin');
    
+   /*Ruta para el controlador Usuario*/
    Route::resource('usuario','UsuarioController');
-
+   /*Ruta para el controlador Login*/
+   Route::resource('log','LogController');
+   
+   /**Ruta para desloquear*/
+   Route::get('logout','LogController@logout');
+    
 /** Rutas */
 Route::get('prueba/', function () {
     return "Mensaje de prueba php";

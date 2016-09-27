@@ -18,9 +18,18 @@ use Illuminate\Support\Facades\Redirect;
 /*Importando libreria para obtener parametros de rutas, relacionada a los parametros que la ruta misma envia.*/
 use Illuminate\Routing\Route;
 
+
 class UsuarioController extends Controller
 {    
+   public function __construct(){
+
+      $this->middlerware('admin',['only'=>['create','edit']]);
+
+    
+   }
+
     /**
+     * 
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

@@ -4,6 +4,7 @@ namespace Cinema\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Cinema\Http\Requests;
+//use Cinema\Http\Controllers\Controller; // agregado
 /** Hacer uso del modelo */
 use Cinema\User;
 
@@ -22,10 +23,10 @@ use Illuminate\Routing\Route;
 class UsuarioController extends Controller
 {    
    public function __construct(){
-
-      $this->middlerware('admin',['only'=>['create','edit']]);
-
-    
+  /*aplicandolo a todos los controladores.*/
+   $this->middleware('auth'); //Primer middleware autenticamos 
+   //$this->middleware('admin',['only'=>['create','edit']]); //Segundo Middleware verificamos privilegios
+  $this->middleware('admin')->only(['create','edit']);
    }
 
     /**

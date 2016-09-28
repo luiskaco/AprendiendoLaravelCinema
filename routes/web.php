@@ -23,6 +23,8 @@
    Route::resource('usuario','UsuarioController');
    /*Ruta para el controlador Login*/
    Route::resource('log','LogController');
+   /*Ruta para el controlador Genero*/
+   Route::resource('genero','GeneroController');
    
    /**Ruta para desloquear*/
    Route::get('logout','LogController@logout');

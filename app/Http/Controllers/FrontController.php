@@ -15,7 +15,7 @@ class FrontController extends Controller
     public function __construct()
     {
 
-         /*Middleware: Nios provee de mecasnismo conveniente para solicitár las peticiones php que entran al servidor. */
+         /*Middleware: Nios provee de mecasnismo conveniente para filtrar las peticiones php que entran al servidor. */
          /*Un middleware de autenticacion*/
         
         $this->middleware('auth')->only('admin'); 

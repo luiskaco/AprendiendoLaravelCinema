@@ -14,7 +14,7 @@ class Admin
 {
 
         /*Uso de interface*/
-          /* protected $auth;
+         /*  protected $auth;
            function __contruct(Guard $auth){
                $this->auth = $auth;
            }

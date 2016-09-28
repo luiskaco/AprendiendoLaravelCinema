@@ -110,6 +110,8 @@
     {!! Html::script("js/bootstrap.min.js") !!}
     {!! Html::script("js/metisMenu.min.js") !!}
     {!! Html::script("js/sb-admin-2.js") !!}
+    <!-- Agregado -->
+    {!! Html::script("js/script.js") !!}
    
 
 </body>

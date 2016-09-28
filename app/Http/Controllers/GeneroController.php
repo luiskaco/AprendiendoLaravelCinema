@@ -7,7 +7,16 @@ use Illuminate\Http\Request;
 use Cinema\Http\Requests;
 
 class GeneroController extends Controller
-{
+{   
+
+
+     public function __construct(){
+    /*aplicandolo a todos los controladores.*/
+   $this->middleware('auth'); //Primer middleware autenticamos 
+   //$this->middleware('admin',['only'=>['create','edit']]); //Segundo Middleware verificamos privilegios
+  
+   }
+
     /**
      * Display a listing of the resource.
      *
@@ -34,9 +43,13 @@ class GeneroController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request) /*El ajax busca en la ruta quien tiene */
     {
-        //
+        if($request->ajax()){
+            return response()->json([
+                'mensaje'=>$request->all()
+                ]);
+        }
     }
 
     /**

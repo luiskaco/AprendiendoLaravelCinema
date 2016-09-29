@@ -9,19 +9,13 @@ $('#registro').click(function(){
 
             $.ajax({
             	url: route,
-            	headers:{'X-CSRF-TOKEN':token},
+            	headers:{'X-CSRF-TOKEN':token}, /*Agregar esta linea para el token*/
             	type:  'POST',
             	dataType: 'json',
             	data: {genre: dato},
-            })
-            .done(function() {
-            	console.log("success");
-            })
-            .fail(function() {
-            	console.log("error");
-            })
-            .always(function() {
-            	console.log("complete");
+            	success:function(){
+            		$('#msj-success').fadeIn(); //Nota personal: Quita el display none
+            	}
             });
 
 });

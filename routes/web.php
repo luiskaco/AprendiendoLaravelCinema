@@ -25,6 +25,7 @@
    Route::resource('log','LogController');
    /*Ruta para el controlador Genero*/
    Route::resource('genero','GeneroController');
+   Route::get('generos','GeneroController@listing');
    
    /**Ruta para desloquear*/
    Route::get('logout','LogController@logout');

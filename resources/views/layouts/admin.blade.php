@@ -14,6 +14,8 @@
 	{!! Html::style('css/font-awesome.min.css') !!}
 
    
+   
+
 </head>
 
 <body>
@@ -85,10 +87,10 @@
                             <a href="#"><i class="fa fa-child fa-fw"></i> Genero<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#"><i class='fa fa-plus fa-fw'></i> Agregar</a>
+                                    <a href="{{ URL::to('/genero/create') }}"><i class='fa fa-plus fa-fw'></i> Agregar</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class='fa fa-list-ol fa-fw'></i> Generos</a>
+                                    <a href="{{ URL::to('/genero') }}"><i class='fa fa-list-ol fa-fw'></i> Generos</a>
                                 </li>
                             </ul>
                         </li>
@@ -105,15 +107,13 @@
 
     </div>
     
-
     {!! Html::script("js/jquery.min.js") !!}
     {!! Html::script("js/bootstrap.min.js") !!}
     {!! Html::script("js/metisMenu.min.js") !!}
     {!! Html::script("js/sb-admin-2.js") !!}
     <!-- Agregado -->
-    {!! Html::script("js/script.js") !!}
-   
-
+    @section('scripts')
+    @show
 </body>
 
 </html>

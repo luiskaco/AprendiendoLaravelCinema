@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use Cinema\Http\Requests;
 
+/*Incorporar el modelo.*/
+use Cinema\Genre;
+
 class GeneroController extends Controller
 {   
 
@@ -22,9 +25,21 @@ class GeneroController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+    public function listing(){
+            // Listar todo   
+        $genres = Genre::all();
+            // Responder en json
+        return response()->json(
+               $genres->toArray() //convirtiendo en array   
+            );
+
+    }
+
+
     public function index()
     {
-        //
+        return view('genero.index');
     }
 
     /**
@@ -44,11 +59,12 @@ class GeneroController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) /*El ajax busca en la ruta quien tiene */
-    {
-        if($request->ajax()){
+    {  
+        if($request->ajax()){  //verificar que es ajax
+             Genre::create($request->all()); //crear el modelo
             return response()->json([
                 'mensaje'=>$request->all()
-                ]);
+            ]);
         }
     }
 

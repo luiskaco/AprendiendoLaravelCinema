@@ -1,13 +1,15 @@
 @extends('layouts.admin')
 @section('content')
-               
-
-
+              
        {!! Form::open() !!}	
- 
- 
+
         <div id="msj-success" class="alert alert-success alert-dismissible" role='alert' style="display: none">
         	<strong>Genero Agregado Correctamente</strong>
+        </div>	
+
+
+         <div id="msj-error" class="alert alert-danger alert-dismissible" role='alert' style="display: none">
+        	<strong id='msj'></strong>
         </div>	
 	   <!-- Con ajax se usa un tipo token para identificar si no es una peticion malebola-->
 

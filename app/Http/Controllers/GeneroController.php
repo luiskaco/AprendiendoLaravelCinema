@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use Cinema\Http\Requests;
 
+/*Incorporando el request*/
+use Cinema\Http\Requests\GenreRequest;
+
 /*Incorporar el modelo.*/
 use Cinema\Genre;
 
@@ -58,12 +61,13 @@ class GeneroController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) /*El ajax busca en la ruta quien tiene */
+    public function store(GenreRequest $request) /*El ajax busca en la ruta quien tiene */
     {  
         if($request->ajax()){  //verificar que es ajax
              Genre::create($request->all()); //crear el modelo
             return response()->json([
-                'mensaje'=>$request->all()
+                //'mensaje'=>$request->all()
+                'mensaje'=>'creado'
             ]);
         }
     }
@@ -87,7 +91,12 @@ class GeneroController extends Controller
      */
     public function edit($id)
     {
-        //
+        //alistar actualizar
+         $genre=Genre::find($id);
+        return response()->json(
+            $genre->toArray()
+            );
+
     }
 
     /**
@@ -99,7 +108,14 @@ class GeneroController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //actualizar
+        $genre=Genre::find($id);
+        $genre->fill($request->all());
+        $genre->save();
+
+        return response()->json([
+             "mensaje"=>'Listo'
+            ]);
     }
 
     /**
@@ -109,7 +125,11 @@ class GeneroController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    {        
+            $genre=Genre::find($id);
+            $genre->delete();
+             return response()->json([
+             "mensaje"=>'Listo'
+            ]);
     }
 }

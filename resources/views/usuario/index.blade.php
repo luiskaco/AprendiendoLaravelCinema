@@ -21,6 +21,7 @@ Seria repetir el mismo codigo en cada una de las ventanas
                   @endif
 
 @section('content')
+              <div class="users">
  
              <table class="table table-bordered table-hover">
              	<thead>
@@ -46,5 +47,10 @@ Seria repetir el mismo codigo en cada una de las ventanas
                   @endforeach
              </table>
 
-            {!!$users->render()!!} <!-- Se realizar el renderizado del paginador.-->
+           
+            </div>
+             {!!$users->render()!!} <!-- Se realizar el renderizado del paginador.-->
+@endsection
+@section('scripts')
+      {!! Html::script('js/script3.js') !!}
 @endsection

@@ -15,7 +15,12 @@ $('#registro').click(function(){
             	data: {genre: dato},
             	success:function(){
             		$('#msj-success').fadeIn(); //Nota personal: Quita el display none
-            	}
+            	},
+                error:function(msj){
+                    console.log(msj.responseJSON.genre); //Solo ver el mensaje json de genero
+                    $('#msj').html(msj.responseJSON.genre);
+                    $('#msj-error').fadeIn();
+                },
             });
 
 });

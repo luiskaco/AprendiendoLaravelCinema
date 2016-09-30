@@ -35,12 +35,18 @@ class UsuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //Mostrar Resultado
        //  $users=User::All(); // extraer todo y enviar informacion
           /*Nota:  se sustituira el $users=User::All();  para ser uso del metodo $users=User::paginate();  */    
          $users=User::paginate(2); /** Nota: Dentro del paginate(DENTRO) se especifica el numero de recursos a enviarse. */
+       
+           if($request->ajax()){ 
+              return response()->json(view("usuario.users", compact('users'))->render());
+           }
+
+
          return view("usuario.index", compact('users')); //compacta el json    
           /*Nota3: para mostrar elementos eliminados cde softdelete se usa el metodo ::onlyTrashed()->paginate()*/
     }

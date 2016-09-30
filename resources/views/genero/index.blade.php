@@ -1,5 +1,10 @@
 @extends('layouts.admin')
 @section('content')
+       
+ 		<div id="msj-success" class="alert alert-success alert-dismissible" role='alert' style="display: none">
+        	<strong>Genero Operación realizado Correctamente</strong>
+        </div>	
+
          <!--Incluyendo la ventana modal -->
         @include('genero.modal')
               

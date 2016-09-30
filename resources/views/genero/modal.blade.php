@@ -9,7 +9,7 @@
 			<div class="modal-body">
 				    <!-- para el envio de token-->
 				    <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-				    <input type="hidden" id>
+				    <input type="hidden" id='id'>
 				    <!-- incluimos el mismo form usado pra agregar-->
 				    @include('genero.forms.genero')  
 			</div>

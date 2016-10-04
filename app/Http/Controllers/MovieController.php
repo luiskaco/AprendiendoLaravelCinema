@@ -2,26 +2,33 @@
 
 namespace Cinema\Http\Controllers;
 
-use Illuminate\Http\Request;
-
+use Cinema\Genre;
 use Cinema\Http\Requests;
-use Auth;
-use Session;
-use Redirect;
+use Cinema\Movie;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
-/*Importando el validador REQUiRES para este controlador*/
- use Cinema\Http\Requests\LoginRequest;    // Nombre Simbolico al realizar el make:request
+class MovieController extends Controller
+{    
 
-class LogController extends Controller
-{
+             public function __construct(){
+                          /*aplicandolo a todos los controladores.*/
+                           $this->middleware('auth'); //Primer middleware autenticamos 
+                           //$this->middleware('admin',['only'=>['create','edit']]); //Segundo Middleware verificamos privilegios
+                        
+           }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {    
+
+        $movies=Movie::Movies();
+      //  return $movies;
+        return view('movie.index', compact('movies'));
     }
 
     /**
@@ -30,8 +37,9 @@ class LogController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {  
+       $genres = Genre::pluck('genre','id'); //para listar
+       return view('movie.create', compact('genres'));
     }
 
     /**
@@ -40,15 +48,18 @@ class LogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(LoginRequest $request)
-    {   
-
-         if(Auth::attempt(['email'=>$request['email'],'password'=>$request['password']])){
-             return Redirect::to('admin');
-         }
-            Session::flash('message-errors', 'Datos son incorrecto');
-            return Redirect::to('/');
+    public function store(Request $request)
+    {
+          /*  $file=$request->file();
+            $nombre=$file->getClientOriginalName();
+            \Storage::disk('local')->put($name, \File::get($file));
+*/
+             Movie::create($request->all());
+        
+        return redirect::to('/movie/');
     }
+
+
 
     /**
      * Display the specified resource.
@@ -56,12 +67,6 @@ class LogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-           /*Fujncion para desloquear*/
-          public function logout(){
-                    Auth::logout();
-                    return Redirect::to('/');
-          }
-
     public function show($id)
     {
         //

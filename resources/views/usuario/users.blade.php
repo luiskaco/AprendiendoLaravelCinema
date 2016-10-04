@@ -6,7 +6,7 @@
              			<th>Operacion</th>
              		</tr>
              	</thead>
-                  @foreach($users as $user)
+                @foreach($users as $user)
              	<tbody>
              		<tr>
              			<td>{{ $user->name }}</td>
@@ -19,5 +19,7 @@
                               </td>
              		</tr>
              	</tbody>
-                  @endforeach
-             </table>
+                @endforeach
+
+  </table>
+     {!!$users->render()!!} <!-- Se realizar el renderizado del paginador.-->

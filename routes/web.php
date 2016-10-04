@@ -27,6 +27,9 @@
    Route::resource('genero','GeneroController');
    Route::get('generos','GeneroController@listing');
    
+   /*Ruta para el controlador movie*/
+  Route::resource('movie','MovieController');
+
    /**Ruta para desloquear*/
    Route::get('logout','LogController@logout');
     

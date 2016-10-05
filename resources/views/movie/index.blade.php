@@ -17,8 +17,11 @@
 		                   			<td>{{ 	$movie->name }}</td>
 		                   			<td>{{ 	$movie->genre }}</td>
 		                   			<td>{{	$movie->direction }}</td>
-		                   			<td><img src="storage/app/{{ $movie->path }}" alt=""></td>
-		                   			<td>{{ 	$movie->name}}</td>
+		                   			<td><img src="archivos/{{ $movie->path }}" alt="" width="100px"></td>
+		                   			<td>  {!!
+              /** Usando laravel Collective para los enlaces.  */
+            link_to_route('movie.edit', $title = 'Editar', $parameters = $movie->id, $attributes = ['class'=>'btn btn-primary'])
+                             !!}</td>
 		                   		</tr>
 		                   	</tbody>
                    	@endforeach

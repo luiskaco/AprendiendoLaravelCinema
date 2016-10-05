@@ -78,9 +78,14 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+
+    public function edit(Movie $movie, $id)
+    {    
+         //Para Actualizar 
+        $genres = Genre::pluck('genre','id'); //para listar
+        $movies = $movie->find($id);
+        dd($movies);
+        return view('movie.edit',['movies'=>$movies,'genres'=>$genres]);
     }
 
     /**

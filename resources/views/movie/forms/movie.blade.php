@@ -20,5 +20,5 @@
 </div>
 <div class="for-group">
 	{!! Form::label('Genero','Genero:') !!}
-	{!! Form::select('genre_id',$genres) !!}
+	{!! Form::select('genre_id',$genres,['class'=>'form-control']) !!}
 </div>

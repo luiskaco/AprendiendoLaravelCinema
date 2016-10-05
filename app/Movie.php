@@ -18,15 +18,16 @@ class Movie extends Model
    
     /*USo del mutador: es para modificar antes de guardar en la base de datos.*/
 	public function setPathAttribute($path){
-				$this->attributes['path'] = Carbon::now()->second.$path->getClientOriginalName();
-				$name = Carbon::now()->second.$path->getClientOriginalName();
-           
-                      $extencion=$path->getClientOriginalExtension();
-                      if($extencion=='png'){
-                      	 \Storage::disk('local')->put($name, \File::get($path));
-                      }
 
-				
+       if(!empty($path)){ //verificar que exista
+                  $this->attributes['path'] = Carbon::now()->second.$path->getClientOriginalName();
+        $name = Carbon::now()->second.$path->getClientOriginalName();
+                    //  $extencion=$path->getClientOriginalExtension();
+                    //  if($extencion=='png'){
+                         \Storage::disk('local')->put($name, \File::get($path));
+                     // }
+
+      }
     }
    /*Laravel builder*/
     public static function Movies(){

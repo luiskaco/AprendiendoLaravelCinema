@@ -33,6 +33,7 @@ class GeneroController extends Controller
             // Listar todo   
         $genres = Genre::all();
             // Responder en json
+            //
         return response()->json(
                $genres->toArray() //convirtiendo en array   
             );

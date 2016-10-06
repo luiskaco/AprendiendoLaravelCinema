@@ -44,7 +44,7 @@ function Mostrar(btn){
     $.get(route, function(res) {
     	/*Llenado los campos del  formulario*/
  	     //Sconsole.log(res);
-    	 $('#genre').val(res.genre);
+    	 $('#genre').val(res.genre);  //formiñarop
     	 $('#id').val(res.id);
     });
 

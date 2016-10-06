@@ -1,5 +1,9 @@
 <?php
 
+use Cinema\Mail\Welcome AS WelcomeEmail;
+use Illuminate\Support\Facades\Mail;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,7 +30,9 @@
    /*Ruta para el controlador Genero*/
    Route::resource('genero','GeneroController');
    Route::get('generos','GeneroController@listing');
-   
+   /*Ruta para mail*/
+  Route::resource('mail','MailController');
+
    /*Ruta para el controlador movie*/
   Route::resource('movie','MovieController');
 
@@ -46,6 +52,14 @@ Route::get('nombre1/{nombre?}', function ($nombre = 'luis2') {
     return "Mi nombre es :".$nombre;
 });
 
+
+/*Ruta Prueba*/
+
+Route::get('welcome', function(){
+      Mail::to('luis@example.com','Probando')
+       ->send(new WelcomeEmail());
+
+});
 
 
 /** ruta controlador  */

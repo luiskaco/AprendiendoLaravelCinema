@@ -81,10 +81,11 @@ class MovieController extends Controller
 
     public function edit(Movie $movie, $id)
     {    
+        dd($id);
          //Para Actualizar 
         $genres = Genre::pluck('genre','id'); //para listar
         $movies = $movie->find($id);
-        dd($movies);
+
         return view('movie.edit',['movies'=>$movies,'genres'=>$genres]);
     }
 

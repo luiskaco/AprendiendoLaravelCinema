@@ -29,3 +29,9 @@ Nota: se usara para realizar una migration de una tabla ya creada.
 
 
 php artisan cache:clear
+
+
+/*SEEDER*/ Crear Seeder
+
+php artisan make:seeder UsersTableSeeder
+php artisan db:seed --class=UsersTableSeeder

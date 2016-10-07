@@ -115,7 +115,14 @@ class UsuarioController extends Controller
     public function edit($id,User $user)
     {
         //Para Actualizar 
+        //
+         
         $user = $user->find($id);
+        $this->notFound($user);
+        /*Validams que exista*/
+      /*  if(!$user){
+          abort(404);
+        }*/
 
         return view('usuario.edit', ['user'=>$user]);
         

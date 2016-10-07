@@ -25,3 +25,7 @@ Nota: se usara para realizar una migration de una tabla ya creada.
            }
 
 /*Se crea un contrcutor para simplificar lineas*/
+
+
+
+php artisan cache:clear

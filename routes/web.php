@@ -38,7 +38,12 @@ use Illuminate\Support\Facades\Mail;
 
    /**Ruta para desloquear*/
    Route::get('logout','LogController@logout');
-    
+ 
+  /*Ruta para recuperar contraseña */
+ /* Route::get('password/email','Auth\PasswordController@getEmail');
+  Route::post('password/email','Auth\PasswordController@postEmail');
+*/
+
 /** Rutas */
 Route::get('prueba/', function () {
     return "Mensaje de prueba php";

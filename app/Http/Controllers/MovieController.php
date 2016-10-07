@@ -54,7 +54,9 @@ class MovieController extends Controller
             $nombre=$file->getClientOriginalName();
             \Storage::disk('local')->put($name, \File::get($file));
 */
-             Movie::create($request->all());
+        Movie::create($request->all());
+
+        Session::flash('message','Pelicula Creada Correctamente');
         
         return redirect::to('/movie/');
     }
@@ -79,14 +81,13 @@ class MovieController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function edit(Movie $movie, $id)
+    public function edit($id)
     {    
-        dd($id);
+    
          //Para Actualizar 
-        $genres = Genre::pluck('genre','id'); //para listar
-        $movies = $movie->find($id);
-
-        return view('movie.edit',['movies'=>$movies,'genres'=>$genres]);
+        $genres= Genre::pluck('genre','id');
+        $movie = Movie::find($id);
+        return view('movie.edit',compact('movie','genres'));
     }
 
     /**
@@ -98,7 +99,13 @@ class MovieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $movie = Movie::find($id);
+        $movie->fill($request->all());
+        $movie->save();
+
+        Session::flash('message','La pelicula ha sido actualizada');
+
+        return Redirect::to('/movie');
     }
 
     /**
@@ -109,6 +116,10 @@ class MovieController extends Controller
      */
     public function destroy($id)
     {
-        //
+       $movie= Movie::find($id);
+        $movie->delete();
+         Session::flash('message','Pelicula Eliminada Correctamente');
+
+        return Redirect::to('/movie');
     }
 }
